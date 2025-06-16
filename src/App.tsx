@@ -22,9 +22,8 @@ const LogoCard: React.FC<LogoCardProps> = ({ logo, url, alt }) => {
     <div
       className={`
         relative cursor-pointer
-        bg-white rounded-2xl shadow-sm
         transition-all duration-200 ease-out
-        hover:shadow-lg hover:scale-105
+        hover:scale-110
         active:scale-95
         ${isPressed ? 'scale-95' : ''}
       `}
@@ -33,11 +32,11 @@ const LogoCard: React.FC<LogoCardProps> = ({ logo, url, alt }) => {
       onMouseUp={() => setIsPressed(false)}
       onMouseLeave={() => setIsPressed(false)}
     >
-      <div className="p-8 flex items-center justify-center aspect-square">
+      <div className="flex items-center justify-center aspect-square">
         <img
           src={logo}
           alt={alt}
-          className="max-w-full max-h-full object-contain transition-opacity duration-200 hover:opacity-90"
+          className="w-full h-full object-contain transition-all duration-200 hover:opacity-90"
         />
       </div>
     </div>
@@ -70,9 +69,9 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
-      <div className="w-full max-w-sm">
-        <div className="grid grid-cols-2 gap-6">
+    <div className="min-h-screen bg-white flex items-center justify-center p-8">
+      <div className="w-full max-w-lg">
+        <div className="grid grid-cols-2 gap-12">
           {logos.map((logoData, index) => (
             <LogoCard
               key={index}
