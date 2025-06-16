@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
 // Import the logo assets
-import cryptonicLogo from './assets/cryptonic-logo.svg';
+import cryptonicLogo from './assets/logo-cryptonic.svg';
 import ledouanierLogo from './assets/logo-ledouanier.png';
-import jimboLogo from './assets/storage.e.jimdo.com_cdn-cgi_image_quality=85,fit=scale-down,format=auto,trim=0;0;0;0,width=480,height=480_image_452265076_5beb9caa-af88-4905-9dfc-b2b3e7d1638b.jpg.png';
+import qult from './assets/qult.png';
+import wackes from './assets/wackes.png';
 
 interface LogoCardProps {
   logo: string;
@@ -11,7 +12,7 @@ interface LogoCardProps {
   alt: string;
 }
 
-const LogoCard: React.FC<LogoCardProps> = ({ logo, url, alt }) => {
+const LogoCard: React.FC<LogoCardProps> = ({ logo, url, alt}) => {
   const [isPressed, setIsPressed] = useState(false);
 
   const handleClick = () => {
@@ -36,7 +37,7 @@ const LogoCard: React.FC<LogoCardProps> = ({ logo, url, alt }) => {
         <img
           src={logo}
           alt={alt}
-          className="w-full h-full object-contain transition-all duration-200 hover:opacity-90"
+          className="w-full h-full object-contain transition-all duration-200 hover:opacity-90 background"
         />
       </div>
     </div>
@@ -48,22 +49,22 @@ function App() {
   const logos = [
     {
       logo: cryptonicLogo,
-      url: "https://cryptonic.example.com", // Replace with actual URL
+      url: "https://back.cryptonic-drinks.com/wp-admin", // Replace with actual URL
       alt: "Cryptonic"
     },
     {
       logo: ledouanierLogo,
-      url: "https://ledouanier.example.com", // Replace with actual URL
+      url: "https://ledouanier.fr/wp-login.php", // Replace with actual URL
       alt: "Le Douanier"
     },
     {
-      logo: jimboLogo,
+      logo: qult,
       url: "https://business.example.com", // Replace with actual URL
       alt: "Business Suite"
     },
     {
-      logo: cryptonicLogo, // Using as placeholder for 4th logo
-      url: "https://portfolio.example.com", // Replace with actual URL
+      logo: wackes, // Using as placeholder for 4th logo
+      url: "https://back.ginwackes.fr/", // Replace with actual URL
       alt: "Portfolio"
     }
   ];
