@@ -72,7 +72,7 @@ function App() {
   return (
     <div className="min-h-screen bg-black flex items-center justify-center p-8">
       <div className="w-full max-w-lg">
-        <div className="grid  grid-cols-1 md-grid-cols-2 gap-24 mt-12 mb-12 pa-12">
+        <div className="grid  grid-cols-1 md-grid-cols-2 gap-24 p-[1em]">
           {logos.map((logoData, index) => (
             <LogoCard
               key={index}
