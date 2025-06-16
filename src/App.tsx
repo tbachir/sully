@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // Import the logo assets
 import cryptonicLogo from './assets/logo-cryptonic.svg';
@@ -6,40 +6,27 @@ import ledouanierLogo from './assets/logo-ledouanier.png';
 import qult from './assets/qult.png';
 import wackes from './assets/wackes.png';
 
-interface LogoCardProps {
+interface LogoItemProps {
   logo: string;
   url: string;
   alt: string;
 }
 
-const LogoCard: React.FC<LogoCardProps> = ({ logo, url, alt}) => {
-  const [isPressed, setIsPressed] = useState(false);
-
+const LogoItem: React.FC<LogoItemProps> = ({ logo, url, alt }) => {
   const handleClick = () => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
     <div
-      className={`
-        relative cursor-pointer
-        transition-all duration-200 ease-out
-        hover:scale-110
-        active:scale-95
-        ${isPressed ? 'scale-95' : ''}
-      `}
+      className="flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110 hover:opacity-80"
       onClick={handleClick}
-      onMouseDown={() => setIsPressed(true)}
-      onMouseUp={() => setIsPressed(false)}
-      onMouseLeave={() => setIsPressed(false)}
     >
-      <div className="flex items-center justify-center aspect-square">
-        <img
-          src={logo}
-          alt={alt}
-          className="w-full h-full object-contain transition-all duration-200 hover:opacity-90 background"
-        />
-      </div>
+      <img
+        src={logo}
+        alt={alt}
+        className="w-32 h-32 object-contain"
+      />
     </div>
   );
 };
@@ -49,38 +36,44 @@ function App() {
   const logos = [
     {
       logo: cryptonicLogo,
-      url: "https://back.cryptonic-drinks.com/wp-admin", // Replace with actual URL
+      url: "https://back.cryptonic-drinks.com/wp-admin",
       alt: "Cryptonic"
     },
     {
       logo: qult,
-      url: "https://back.qult.com/wp-admin", // Replace with actual URL
-      alt: "Business Suite"
+      url: "https://back.qult.com/wp-admin",
+      alt: "Qult"
     },
     {
-      logo: wackes, // Using as placeholder for 4th logo
-      url: "https://back.ginwackes.fr/wp_admin", // Replace with actual URL
-      alt: "Portfolio"
+      logo: wackes,
+      url: "https://back.ginwackes.fr/wp_admin",
+      alt: "Wackes"
     },
     {
       logo: ledouanierLogo,
-      url: "https://ledouanier.fr/wp-login.php", // Replace with actual URL
+      url: "https://ledouanier.fr/wp-login.php",
       alt: "Le Douanier"
-    },
+    }
   ];
 
+  // Duplicate logos for seamless loop
+  const duplicatedLogos = [...logos, ...logos];
+
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-8">
-      <div className="w-full max-w-lg">
-        <div className="grid  grid-cols-1 md-grid-cols-2 gap-24 p-[1em]">
-          {logos.map((logoData, index) => (
-            <LogoCard
-              key={index}
-              logo={logoData.logo}
-              url={logoData.url}
-              alt={logoData.alt}
-            />
-          ))}
+    <div className="min-h-screen bg-black flex items-center justify-center overflow-hidden">
+      <div className="relative w-full max-w-xs h-96">
+        <div className="scroll-container">
+          <div className="scroll-content">
+            {duplicatedLogos.map((logoData, index) => (
+              <div key={index} className="logo-item">
+                <LogoItem
+                  logo={logoData.logo}
+                  url={logoData.url}
+                  alt={logoData.alt}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
