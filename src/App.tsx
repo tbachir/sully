@@ -53,24 +53,24 @@ function App() {
       alt: "Cryptonic"
     },
     {
-      logo: ledouanierLogo,
-      url: "https://ledouanier.fr/wp-login.php", // Replace with actual URL
-      alt: "Le Douanier"
-    },
-    {
       logo: qult,
-      url: "https://business.example.com", // Replace with actual URL
+      url: "https://back.qult.com/wp-admin", // Replace with actual URL
       alt: "Business Suite"
     },
     {
       logo: wackes, // Using as placeholder for 4th logo
-      url: "https://back.ginwackes.fr/", // Replace with actual URL
+      url: "https://back.ginwackes.fr/wp_admin", // Replace with actual URL
       alt: "Portfolio"
-    }
+    },
+    {
+      logo: ledouanierLogo,
+      url: "https://ledouanier.fr/wp-login.php", // Replace with actual URL
+      alt: "Le Douanier"
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center p-8">
+    <div className="min-h-screen bg-black flex items-center justify-center p-8">
       <div className="w-full max-w-lg">
         <div className="grid grid-cols-2 gap-12">
           {logos.map((logoData, index) => (
